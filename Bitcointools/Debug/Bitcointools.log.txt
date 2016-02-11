@@ -1,0 +1,18 @@
+﻿Build started 10/02/2016 17:16:50.
+     1>Project "C:\Users\Luciara\Documents\Osmar-Escola\Bitcointools\Bitcointools\Bitcointools.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\Bitcointools.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         c:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt GetJsonData.cpp main.cpp
+         main.cpp
+     1>c:\users\luciara\documents\osmar-escola\bitcointools\bitcointools\main.cpp(7): error C2065: 'xxx' : undeclared identifier
+     1>c:\users\luciara\documents\osmar-escola\bitcointools\bitcointools\main.cpp(7): error C2143: syntax error : missing ';' before 'return'
+     1>c:\users\luciara\documents\osmar-escola\bitcointools\bitcointools\main.cpp(9): fatal error C1004: unexpected end-of-file found
+         GetJsonData.cpp
+     1>c:\users\luciara\documents\osmar-escola\bitcointools\bitcointools\getjsondata.cpp(1): fatal error C1083: Cannot open include file: 'http_client.h': No such file or directory
+         Generating Code...
+     1>Done Building Project "C:\Users\Luciara\Documents\Osmar-Escola\Bitcointools\Bitcointools\Bitcointools.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:28.72

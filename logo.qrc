@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Capturar.PNG</file>
+    </qresource>
+</RCC>

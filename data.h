@@ -2,27 +2,23 @@
 #include <string>
 #include <vector>
 using namespace std;
+class exchange{
+public:
+    string id;// Id da exchange
+    double lastPrice; // ultimo preço do período em Reais
+};
+class time_by_exchange{
+public:
+    string id;
+    long timeStampLastTrade; // timestamp do ultimo trade de cada exchange
+};
 class Data{
 public:
 	struct Timestamp {
-		struct exchange{
-			string id;
-			long timeStampLastTrade; // timestamp do ultimo trade de cada exchange
-			};
 		public:
-			vector<exchange> exchanges;
+            vector<time_by_exchange> exchanges;
 		};
 	struct Ticker{
-		struct exchange{
-			string id;// Id da exchange
-			double lastPrice; // ultimo preço do período em Reais
-			double highPrice; // Maior Preço do período em Reais
-			double lowPrice; // Menor Preço em Reais
-			double volBTC; // Volume em BTC
-			double averagePrice; // Preço médio em Reais no Período
-			int tradesQty; // Quantidade de trades no período
-			double money; // Volume em reais no período
-			};
 		vector<exchange> exchanges;
 		};
 	// variables

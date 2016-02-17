@@ -31,8 +31,26 @@ void BitTools::replyFinished(QNetworkReply* reply, float amount)
     {
       QScriptEngine engine;
       Data lastinfo;
+      time_by_exchange tbe;
+      exchange bmf;
       QString data = (QString) reply->readAll();
       QScriptValue result = engine.evaluate(data);
+      QScriptValue exchanges_lt_times = result.property("timestamp").property("exchanges");
+      QScriptValueIterator it(exchanges_lt_times);
+      while (it.hasNext()) {
+         it.next();
+         tbe.timeStampLastTrade = it.value().toInteger();
+         tbe.id = it.name().toStdString();
+         lastinfo.timestamp.exchanges.push_back(tbe);
+      }
+      QScriptValue exchanges_prices = result.property("ticker_24h").property("exchanges");
+      QScriptValueIterator its(exchanges_prices);
+      while (its.hasNext()) {
+         bmf.id = its.name().toStdString();
+         QScriptValue prices = its.value();
+         bmf.lastPrice = prices.property("last").toNumber();
+         lastinfo.lastticker.exchanges.push_back(bmf);
+      }
     }
 BitTools::~BitTools()
 {

@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QtNetwork/QNetworkAccessManager>
 #include <QtNetwork/QNetworkReply>
+#include <data.h>
 
 namespace Ui {
 class BitTools;
@@ -19,7 +20,8 @@ public:
 
 public slots:
     void load(float amount=0);
-    void replyFinished(QNetworkReply* reply, float amount=0);
+    void replyFinished(QNetworkReply* reply, double amount=0);
+    void parsedatatoscreen(Data data);
 
 private slots:
     void on_pushButton_clicked();

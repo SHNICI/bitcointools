@@ -18,16 +18,16 @@ BitTools::BitTools(QWidget *parent) :
     load();
 }
 
-void BitTools::load(float amount)
+void BitTools::load(double amount)
     {
       QUrl qrl("http://api.bitvalor.com/v1/ticker.json");
       manager = new QNetworkAccessManager(this);
-      connect(manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished(QNetworkReply*)));
+      connect(manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished(QNetworkReply*, amount)));
       QNetworkReply* reply = NULL;
       reply = manager->get(QNetworkRequest(qrl));
     }
 
-void BitTools::replyFinished(QNetworkReply* reply, float amount)
+void BitTools::replyFinished(QNetworkReply* reply, double amount)
     {
       QScriptEngine engine;
       Data lastinfo;
@@ -70,4 +70,8 @@ void BitTools::on_pushButton_clicked()
 void BitTools::on_pushButton_2_clicked()
 {
     load();
+}
+void BitTools::parsedatatoscreen(Data data, double amount)
+{
+
 }

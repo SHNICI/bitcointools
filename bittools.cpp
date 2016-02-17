@@ -31,11 +31,25 @@ void BitTools::replyFinished(QNetworkReply* reply, float amount)
     {
       QScriptEngine engine;
       Data lastinfo;
-      qDebug() << reply->readAll();
       QString data = (QString) reply->readAll();
       QScriptValue result = engine.evaluate(data);
     }
 BitTools::~BitTools()
 {
     delete ui;
+}
+
+void BitTools::on_pushButton_clicked()
+{
+    float amount;
+    QString inputfromle;
+    inputfromle = ui->lineEdit->text();
+    inputfromle.replace(",",".");
+    amount = inputfromle.toFloat();
+    load(amount);
+}
+
+void BitTools::on_pushButton_2_clicked()
+{
+    load();
 }

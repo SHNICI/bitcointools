@@ -21,6 +21,11 @@ public slots:
     void load(float amount=0);
     void replyFinished(QNetworkReply* reply, float amount=0);
 
+private slots:
+    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
+
 private:
     QNetworkAccessManager* manager;
     Ui::BitTools *ui;

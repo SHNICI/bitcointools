@@ -1,5 +1,4 @@
 #include "bittools.h"
-#include "ticker.h"
 #include "data.h"
 #include "ui_bittools.h"
 #include <QtCore/QUrl>
@@ -23,7 +22,7 @@ void BitTools::load(float amount)
     {
       QUrl qrl("http://api.bitvalor.com/v1/ticker.json");
       manager = new QNetworkAccessManager(this);
-      connect(manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished(QNetworkReply*, amount)));
+      connect(manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished(QNetworkReply*)));
       QNetworkReply* reply = NULL;
       reply = manager->get(QNetworkRequest(qrl));
     }
@@ -31,6 +30,7 @@ void BitTools::load(float amount)
 void BitTools::replyFinished(QNetworkReply* reply, float amount)
     {
       QScriptEngine engine;
+      Data lastinfo;
       qDebug() << reply->readAll();
       QString data = (QString) reply->readAll();
       QScriptValue result = engine.evaluate(data);

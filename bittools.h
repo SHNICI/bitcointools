@@ -18,8 +18,8 @@ public:
     ~BitTools();
 
 public slots:
-    void load();
-    void replyFinished(QNetworkReply* reply);
+    void load(float amount=0);
+    void replyFinished(QNetworkReply* reply, float amount=0);
 
 private:
     QNetworkAccessManager* manager;

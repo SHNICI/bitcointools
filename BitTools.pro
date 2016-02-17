@@ -20,8 +20,7 @@ SOURCES += main.cpp\
         bittools.cpp
 
 HEADERS  += bittools.h \
-    data.h \
-    ticker.h
+    data.h
 
 FORMS    += bittools.ui
 

@@ -1,5 +1,4 @@
 #include "bittools.h"
-#include "ticker.h"
 #include "data.h"
 #include <QApplication>
 

@@ -19,9 +19,9 @@ public:
     ~BitTools();
 
 public slots:
-    void load(float amount=0);
+    void load(double amount=0);
     void replyFinished(QNetworkReply* reply, double amount=0);
-    void parsedatatoscreen(Data data);
+    void parsedatatoscreen(Data data, double amount=0);
 
 private slots:
     void on_pushButton_clicked();

@@ -4,10 +4,10 @@
 #include <QtCore/QUrl>
 #include <QtNetwork/QNetworkRequest>
 #include <QtNetwork/QNetworkReply>
-
 #include <QString>
 #include <QCoreApplication>
 #include <QtScript>
+#include <vector>
 
 
 BitTools::BitTools(QWidget *parent) :
@@ -32,7 +32,7 @@ void BitTools::replyFinished(QNetworkReply* reply, double amount)
       QScriptEngine engine;
       Data lastinfo;
       time_by_exchange tbe;
-      exchange bmf;
+      Exchange bmf;
       QString data = (QString) reply->readAll();
       QScriptValue result = engine.evaluate(data);
       QScriptValue exchanges_lt_times = result.property("timestamp").property("exchanges");
@@ -73,5 +73,36 @@ void BitTools::on_pushButton_2_clicked()
 }
 void BitTools::parsedatatoscreen(Data data, double amount)
 {
+    AllOpportunity opportunity;
+    vector<Exchange>::iterator it;
+    vector<Exchange>::iterator j;
+    Exchange exchange , exchange2;
+    double delta;
+    double risk;
+    // a loop to scan the STL container
+    for (it = data.lastticker.exchanges.begin();
+            it != data.lastticker.exchanges.end();
+            it++) {
+            exchange= *it;
+        // a loop to scan the STL container
+        for (j = data.lastticker.exchanges.begin();
+                j != data.lastticker.exchanges.end();
+                j++) {
+            exchange2 = *j;
+            if (j != it){
+                if (amount = 0){
+                    delta = exchange.lastPrice - exchange2.lastPrice;
+                }
+                else{
+                    delta = (exchange.lastPrice - exchange2.lastPrice)*amount;
+                }
+                if (delta>0){
+                     risk =0; //calcular risk
+                     opportunity.opportunity.push_back(Opportunity(delta,exchange.lastPrice,exchange2.lastPrice,exchange.id,exchange2.id,risk));
+                }
 
+           }
+
+        }
+    }
 }

@@ -2,7 +2,23 @@
 #include <string>
 #include <vector>
 using namespace std;
-class exchange{
+class Opportunity{
+public:
+    double delta;
+    double inprice;
+    double outprice;
+    string inexchange;
+    string outexchange;
+    double risk;
+    Opportunity(double delta,double inprice,double outprice,string inexchange,string outexchange, double risk): delta(delta) , inprice(inprice), outprice(outprice), inexchange(inexchange), outexchange(outexchange),risk(risk){
+    }
+};
+class AllOpportunity{
+public:
+    vector<Opportunity> opportunity;
+
+};
+class Exchange{
 public:
     string id;// Id da exchange
     double lastPrice; // ultimo preço do período em Reais
@@ -19,7 +35,7 @@ public:
             vector<time_by_exchange> exchanges;
 		};
 	struct Ticker{
-		vector<exchange> exchanges;
+        vector<Exchange> exchanges;
 		};
 	// variables
 	Timestamp timestamp;

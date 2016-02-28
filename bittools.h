@@ -19,14 +19,12 @@ public:
     ~BitTools();
 
 public slots:
-    void load(double amount=0);
-    void replyFinished(QNetworkReply* reply, double amount=0);
-    void parsedatatoscreen(Data data, double amount=0);
+    void load();
+    void replyFinished(QNetworkReply* reply);
+    void parsedatatoscreen(Data data);
 
 private slots:
     void on_pushButton_clicked();
-
-    void on_pushButton_2_clicked();
 
 private:
     QNetworkAccessManager* manager;

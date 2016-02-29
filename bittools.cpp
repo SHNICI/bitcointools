@@ -84,6 +84,8 @@ void BitTools::parsedatatoscreen(Data data){
     vector<Price>::iterator p_it;
     Exchange exchange, exchange2;
     double delta, risk;
+    int date_delta;
+    QDateTime time, currentDateTime;
     double amount = ui->money->text().replace(",",".").toDouble();
     // a loop to scan the STL container
     for (it = data.lastticker.exchanges.begin(); it != data.lastticker.exchanges.end(); ++it) {
@@ -94,7 +96,21 @@ void BitTools::parsedatatoscreen(Data data){
             if (j != it){
                 delta = (exchange.last_price - exchange2.last_price) * (amount == 0 ? 1 : amount/exchange2.last_price);
                 if (delta>0){
-                     risk = 0;
+                     risk = (amount == 0 ? 1 : amount/exchange2.last_price)/delta;
+                     for (tbe_it = data.timestamp.exchanges.begin(); tbe_it != data.timestamp.exchanges.end(); ++tbe_it){
+                         if(tbe_it->id==exchange2.id){
+                             time.setTime_t(tbe_it->time_stamp_last_trade);
+                             currentDateTime = QDateTime::currentDateTime();
+                             date_delta = (time.secsTo( currentDateTime) );
+                             risk = risk*date_delta/60;
+                         }
+                         if(tbe_it->id==exchange.id){
+                             time.setTime_t(tbe_it->time_stamp_last_trade);
+                             currentDateTime = QDateTime::currentDateTime();
+                             date_delta = (time.secsTo( currentDateTime) );
+                             risk = risk*date_delta/60;
+                         }
+                     }
                      opportunity.push_back(Opportunity(delta,exchange2.last_price,exchange.last_price,exchange2.id,exchange.id,risk));
                 }
             }

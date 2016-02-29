@@ -14,6 +14,7 @@
 BitTools::BitTools(QWidget *parent) : QMainWindow(parent), ui(new Ui::BitTools)
 {
     ui->setupUi(this);
+    this->setStyleSheet("background-color:white;");
     load();
 }
 
@@ -64,6 +65,15 @@ void BitTools::on_pushButton_clicked(){
     load();
 }
 
+bool operator<(const Opportunity &s1, const Opportunity &s2){
+    if(s1.delta > s2.delta){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
 //  Function to get data provided by replyFinished() and parse it to screen with formatting
 void BitTools::parsedatatoscreen(Data data){
     vector<Opportunity> opportunity;
@@ -82,15 +92,15 @@ void BitTools::parsedatatoscreen(Data data){
         for (j = data.lastticker.exchanges.begin(); j != data.lastticker.exchanges.end(); ++j) {
             exchange2 = *j;
             if (j != it){
-                delta = (exchange.last_price - exchange2.last_price) / (amount == 0 ? 1 : amount/exchange2.last_price);
+                delta = (exchange.last_price - exchange2.last_price) * (amount == 0 ? 1 : amount/exchange2.last_price);
                 if (delta>0){
                      risk = 0;
-                     opportunity.push_back(Opportunity(delta,exchange.last_price,exchange2.last_price,exchange.id,exchange2.id,risk));
+                     opportunity.push_back(Opportunity(delta,exchange2.last_price,exchange.last_price,exchange2.id,exchange.id,risk));
                 }
             }
         }
     }
-
+    sort(opportunity.begin(),opportunity.end());
     QStandardItemModel *model = new QStandardItemModel(opportunity.size(), 4);
     model->setHorizontalHeaderItem(0, new QStandardItem(QString("Profit")));
     model->setHorizontalHeaderItem(1, new QStandardItem(QString("Buy Price")));

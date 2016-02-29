@@ -111,6 +111,7 @@ public:
         return output;
     }
 };
+bool operator<(const Opportunity &s1, const Opportunity &s2);
 
 class Price{
 public:

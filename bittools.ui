@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>BitTools</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="logo.qrc">
+    <normaloff>:/Capturar.ico</normaloff>:/Capturar.ico</iconset>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QLineEdit" name="money">
     <property name="geometry">
@@ -40,7 +44,7 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>280</x>
       <y>450</y>
       <width>21</width>
       <height>16</height>
@@ -70,10 +74,28 @@
      </rect>
     </property>
    </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>10</y>
+      <width>71</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="logo.qrc">:/Capturar.PNG</pixmap>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="logo.qrc"/>
+ </resources>
  <connections/>
 </ui>

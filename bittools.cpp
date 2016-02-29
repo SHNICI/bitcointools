@@ -96,7 +96,8 @@ void BitTools::parsedatatoscreen(Data data){
             if (j != it){
                 delta = (exchange.last_price - exchange2.last_price) * (amount == 0 ? 1 : amount/exchange2.last_price);
                 if (delta>0){
-                     risk = (amount == 0 ? 1 : amount/exchange2.last_price)/delta;
+                     risk = (amount == 0 ? 1 : amount/exchange2.last_price)/(exchange.last_price - exchange2.last_price);
+                     qDebug() << risk;
                      for (tbe_it = data.timestamp.exchanges.begin(); tbe_it != data.timestamp.exchanges.end(); ++tbe_it){
                          if(tbe_it->id==exchange2.id){
                              time.setTime_t(tbe_it->time_stamp_last_trade);

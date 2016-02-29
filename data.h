@@ -1,9 +1,12 @@
 #pragma once
+#include "stdio.h"
 #include <string>
 #include <vector>
 #include <iostream>
 #include <sstream>
 #include <QtNetwork/QNetworkRequest>
+#include <QDateTime>
+
 
 using namespace std;
 
